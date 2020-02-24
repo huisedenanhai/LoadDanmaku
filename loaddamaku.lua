@@ -1,3 +1,5 @@
+local utils = require 'mp.utils'
+
 function get_extension(path)
     retval = string.match(path,"%.([^%.]+)$")
     return retval
@@ -156,7 +158,7 @@ function danmaku2ass_load(dir,filename,width,height)
         '-ds',5.0,
         '-fs',math.ceil(height/25),
         '-o',render_path(output_path),
-        render_path(dir..filename)
+        render_path(utils.join_path(dir, filename))
     }
     os.execute(table2string(danmaku2ass_cmd))
 
